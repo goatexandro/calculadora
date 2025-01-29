@@ -18,7 +18,7 @@ jobs:
     - name: Loguearse en docker
       run: |
         echo " Logueandose..."
-        docker login -u ${{ DOCKER_USER }} -p ${{ DOCKER_TOKEN }}
+        docker login -u ${{ secrets.DOCKER_USER }} -p ${{ DOCKER_TOKEN }}
 
     - name: Construyendo la imagen 
       run: docker build -t alexandro2/calculadora:latest .
