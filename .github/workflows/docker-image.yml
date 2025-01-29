@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Docker checkout
+      uses: actions/checkout@v4
+
+    - name: Loguearse en docker
+      run: |
+        echo " Logueandose..."
+        docker login -u ${{ DOCKER_USER }} -p ${{ DOCKER_TOKEN }}
+   # - name: Build the Docker image
+   #  run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
