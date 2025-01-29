@@ -21,9 +21,8 @@ jobs:
         docker login -u ${{ DOCKER_USER }} -p ${{ DOCKER_TOKEN }}
 
     - name: Construyendo la imagen 
-      run: docker build -t alexandro2/calculadora:latest
+      run: docker build -t alexandro2/calculadora:latest .
+      
     - name: Subiendo imagen
       run: docker push ${{ secrets.DOCKER_USER }}/calculadora:latest
-    
-   # - name: Build the Docker image
-   #  run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+  
