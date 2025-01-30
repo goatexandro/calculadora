@@ -22,7 +22,7 @@ jobs:
   
        username: ${{ secrets.DOCKER_USER }}
     
-       password: ${{ DOCKER_TOKEN }}
+       password: ${{ secrets.DOCKER_TOKEN }}
        
 
     - name: Construyendo la imagen 
