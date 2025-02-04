@@ -15,13 +15,13 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 'latest'
+        php-version: '8.2'
 
     - name: Instalar las dependencias
-      run: composer install --no-progress --no-suggest
+      run: composer install 
     
     - name: tests
-      run: ./vendor/bin/phpunit
+      run: vendor/bin/phpunit --testdox tests
 
     
 
