@@ -3,7 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "master" ]
-
+    tags:
+       "v"
 
 jobs:
   tests:
@@ -19,9 +20,6 @@ jobs:
 
     - name: Instalar las dependencias
       run: composer install 
-
-    - name: Dar permisos a PHPUnit
-      run: chmod +x vendor/bin/phpunit
     
     - name: tests
       run: vendor/bin/phpunit --testdox tests
@@ -51,9 +49,9 @@ jobs:
        password: ${{ secrets.DOCKER_TOKEN }}
        
     - name: Build and push Docker images
-      uses: docker/build-push-action@v6.13.0
+      uses: docker/build-push-action@v6
       with:
-        context: .
-        push: true
         platforms: linux/amd64,linux/arm64  
+        push: true
         tags: ${{ secrets.DOCKER_USER }}/calculadora:latest
+
